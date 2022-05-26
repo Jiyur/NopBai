@@ -1,0 +1,139 @@
+:root{
+    --green:#27ae60;
+    --black:#192a56;
+    --light-color:#666;
+    --box-shadow:0 .5rem 1.5rem rgba(0,0,0,.1);
+}
+
+.wrap-icon-cart{
+    display: inline-block;
+}
+.cart-basket{
+    width: 45px !important;
+    font-size: .6rem;
+    /*position: absolute;*/
+    top: -6px;
+    right: -5px;
+    width: 15px;
+    height: 15px;
+    color: #fff;
+    background-color: #418deb;
+    border-radius: 50%;
+}
+
+header{
+
+    font-family: "Varela Round",Arial,"Helvetica Neue",Helvetica,sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none; border:none;
+    transition: all .2s linear;
+
+    font-size: 55.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 5.5rem;
+    scroll-behavior: smooth;
+
+    position: fixed;
+    top:0; left: 0; right:0;
+    background: #fff;
+    padding:1rem 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
+}
+
+header .logo{
+    color:var(--black);
+    font-size: 1.5rem !important;
+    font-weight: 500 !important;
+}
+
+header .logo i{
+    color:var(--green)!important;
+}
+
+header .navbar a{
+    font-size: 1.7rem;
+    border-radius: .5rem;
+    padding:.5rem 1.5rem;
+    color:var(--light-color);
+}
+
+header .navbar a.active,
+header .navbar a:hover{
+    color:#fff;
+    background: var(--green);
+}
+
+header .icons i,
+header .icons a{
+    cursor: pointer;
+    margin-left: .5rem;
+    height:3.5rem;
+    line-height: 3.5rem;
+    width:3.5rem;
+    text-align: center;
+    color:var(--black);
+    border-radius: 50%;
+    background: #eee;
+}
+
+header .icons i:hover,
+header .icons a:hover{
+    color:#fff;
+    background: var(--green);
+}
+
+header .icons #menu-bars{
+    display: none;
+}
+
+
+.footer {
+    font-family: "Varela Round",Arial,"Helvetica Neue",Helvetica,sans-serif;
+    padding: 2rem 9%;
+    background: #eee !important;
+    text-decoration: none!important;
+}
+
+.footer .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap:1.5rem;
+}
+
+.footer .box-container .box h3{
+    padding:.5rem 0 !important;
+    font-size: 1.5rem !important;
+    color:var(--black) !important;
+}
+
+.footer .box-container .box a{
+    text-decoration: none;
+    display: block !important;
+    padding:.2rem 0 !important;
+    font-size: 1rem !important;
+    color:var(--light-color) !important;
+}
+
+.footer .box-container .box a:hover{
+    color:var(--green);
+    text-decoration: underline;
+}
+
+.footer .credit{
+    text-align: center;
+    border-top: .1rem solid rgba(0,0,0,.1);
+    font-size: 2rem;
+    color:var(--black);
+    padding:.5rem;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.footer .credit span{
+    color:var(--green);
+}

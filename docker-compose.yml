@@ -1,0 +1,18 @@
+version: "3"
+services:
+  food-web:
+    build: .
+    ports:
+      - 5004:8080
+    restart: always
+    networks:
+      - default
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.food-web.entrypoints=websecure"
+      - "traefik.http.routers.food-web.rule=Host(`tranxuanhuy.com`)"
+networks:
+  proxy:
+    external: true

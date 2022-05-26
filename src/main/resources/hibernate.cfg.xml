@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:postgresql://34.87.175.111:5433/test_food</property>
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">postgres</property>
+
+        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="connection.pool_size">100</property>
+
+
+        <property name="hibernate.hbm2ddl.auto">create</property>
+        <mapping class="model.Gallerie"/>
+        <mapping class="model.Catalog"/>
+        <mapping class="model.Food"/>
+        <mapping class="model.User"/>
+        <mapping class="model.Orders"/>
+        <mapping class="model.OrderDetails"/>
+    </session-factory>
+</hibernate-configuration>
