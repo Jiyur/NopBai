@@ -1,5 +1,15 @@
+<%@ page import="csrf.CSRF" %>
+<%@ page import="java.security.NoSuchAlgorithmException" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+    String csrfToken= null;
+    try {
+        csrfToken = CSRF.getToken();
+    } catch (NoSuchAlgorithmException e) {
+        e.printStackTrace();
+    }
+    javax.servlet.http.Cookie cookie=new javax.servlet.http.Cookie("csrfToken",csrfToken); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,6 +135,7 @@
                             <p>${food.desciprtion}</p>
                         </div>
                         <form action="CartServlet" method="post">
+                            <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
                             <input type="hidden" name="product-title" value="Activewear">
                             <div style="margin-bottom: 12px" class="row">
                                 <div class="col-auto">
@@ -156,6 +167,7 @@
 <%--                                </div>--%>
                                 <div style="margin-bottom: 8px" class="col d-grid">
                                     <form action="CartServlet" method="get">
+                                        <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
                                         <input type="hidden" name="isDetail" value="yes">
                                         <input type="hidden" name="foodId" value="<c:out value='${food.fid}'/>">
                                         <input name="AddToCart" type="submit" class="js-buy-ticket btn btn-success btn-lg" value="Thêm vào giỏ hàng">
@@ -181,6 +193,7 @@
         <div class="carousel-related-product">
             <c:forEach var="item" items="${listFood}">
                 <form action="DetailFoodServlet" method="post">
+                    <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
                     <input type="hidden" name="foodId" value="<c:out value='${item.fid}'/>">
                     <a style="text-decoration: none; color:black" onclick="this.parentNode.submit()">
                         <div class="p-2 pb-3">
@@ -223,6 +236,7 @@
         </div>
         <div class="modal-body">
             <form action="CartServlet">
+                <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
                 <button class="btn-success modal-cart">
                     <i class="fas fa-shopping-cart"></i>
                     XEM GIỎ HÀNG

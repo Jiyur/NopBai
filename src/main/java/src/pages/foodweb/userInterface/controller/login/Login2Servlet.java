@@ -68,6 +68,7 @@ public class Login2Servlet extends HttpServlet {
 
             // add a cookie that stores the user's email as a cookie
             Cookie c1 = new Cookie("emailCookie", email);
+            c1.setHttpOnly(true);
             c1.setMaxAge(60 * 60 * 24 * 365 * 2); // set age to 2 years
             c1.setPath("/");                      // allow entire app to access it
             response.addCookie(c1);

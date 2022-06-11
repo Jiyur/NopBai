@@ -2,9 +2,19 @@
 <%@ page import="java.text.DateFormat" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Calendar" %>
+<%@ page import="java.security.NoSuchAlgorithmException" %>
+<%@ page import="csrf.CSRF" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+    String csrfToken= null;
+    try {
+        csrfToken = CSRF.getToken();
+    } catch (NoSuchAlgorithmException e) {
+        e.printStackTrace();
+    }
+    javax.servlet.http.Cookie cookie=new javax.servlet.http.Cookie("csrfToken",csrfToken); %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -330,6 +340,7 @@
                 KHÔNG
             </button>
             <form action="/payment" style="display: inline-block">
+                <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
                 <button style="margin-left: 25px" class="btn-success modal-cart">
                     <i class="fas fa-check"></i>
                     CÓ

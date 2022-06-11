@@ -1,4 +1,14 @@
+<%@ page import="java.security.NoSuchAlgorithmException" %>
+<%@ page import="csrf.CSRF" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+    String csrfToken= null;
+    try {
+        csrfToken = CSRF.getToken();
+    } catch (NoSuchAlgorithmException e) {
+        e.printStackTrace();
+    }
+    javax.servlet.http.Cookie cookie=new javax.servlet.http.Cookie("csrfToken",csrfToken); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,6 +68,7 @@
                     <i class="fas fa-search"></i>
                 </a>
                 <div class="navbar-search-block">
+                    <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
                     <form class="form-inline">
                         <div class="input-group input-group-sm">
                             <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">

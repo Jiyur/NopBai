@@ -1,7 +1,16 @@
+<%@ page import="csrf.CSRF" %>
+<%@ page import="java.security.NoSuchAlgorithmException" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
+<%
+    String csrfToken= null;
+    try {
+        csrfToken = CSRF.getToken();
+    } catch (NoSuchAlgorithmException e) {
+        e.printStackTrace();
+    }
+    javax.servlet.http.Cookie cookie=new javax.servlet.http.Cookie("csrfToken",csrfToken); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -150,6 +159,7 @@
 
 <!-- search form  -->
 <form action="" id="search-form">
+    <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
     <input type="search" placeholder="search here..." name="" id="search-box">
     <label for="search-box" class="fas fa-search"></label>
     <i class="fas fa-times" id="close"></i>
@@ -168,6 +178,7 @@
                         khó lẫn với bất kỳ món cơm nào khác.
                     </p>
                     <form style="cursor: pointer" action="DetailFoodServlet" method="post">
+                        <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
                         <input type="hidden" name="foodId" value="6">
                         <a class="btn btn-primary" onclick="this.parentNode.submit()">
                             <i class="fas fa-shopping-cart"></i>
@@ -322,6 +333,7 @@
         <c:forEach var="item" items="${listFood}">
             <form style="cursor: pointer" action="DetailFoodServlet" method="post">
                 <input type="hidden" name="foodId" value="${item.fid}">
+                <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
                 <a style="text-decoration: none; color: black;" onclick="this.parentNode.submit()">
                     <div class="box count-food">
                         <div class="image">

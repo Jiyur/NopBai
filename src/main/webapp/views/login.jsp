@@ -1,5 +1,15 @@
+<%@ page import="csrf.CSRF" %>
+<%@ page import="java.security.NoSuchAlgorithmException" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+    String csrfToken= null;
+    try {
+        csrfToken = CSRF.getToken();
+    } catch (NoSuchAlgorithmException e) {
+        e.printStackTrace();
+    }
+    javax.servlet.http.Cookie cookie=new javax.servlet.http.Cookie("csrfToken",csrfToken); %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -57,6 +67,7 @@
                     </script>
                 </c:if>
                 <form name="checkUser" action="/Login2Servlet" method="post">
+                    <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
                     <input type="email" placeholder="Email" name="email" required>
                     <input type="password" placeholder="Password" name="password" required pattern="\S+.*">
                     <input type="submit" value="Login">
@@ -66,6 +77,7 @@
             <div class="register-show">
                 <h2>REGISTER</h2>
                 <form>
+                    <input type="hidden" name="csrfToken" value="<%= csrfToken %>">
                     <input id="Email" type="email" placeholder="Email" name="registerEmail" required>
                     <input type="password" placeholder="Password" name="registerPassword" required pattern="\S+.*">
                     <input type="text" placeholder="Code" name="code">
