@@ -58,13 +58,14 @@ public class Login2Servlet extends HttpServlet {
         // get the CSRF cookie
         String csrfCookie = null;
         for (Cookie cookie : request.getCookies()) {
-            if (cookie.getName().equals("csrf")) {
+            System.out.println(cookie.getName());
+            if (cookie.getName().equals("csrfToken")) {
                 csrfCookie = cookie.getValue();
             }
         }
 
         // get the CSRF form field
-        String csrfField = request.getParameter("csrf");
+        String csrfField = request.getParameter("csrfToken");
 
         // validate CSRF
         if (csrfCookie == null || csrfField == null || !csrfCookie.equals(csrfField)) {
