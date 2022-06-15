@@ -9,7 +9,9 @@
     } catch (NoSuchAlgorithmException e) {
         e.printStackTrace();
     }
-    javax.servlet.http.Cookie cookie=new javax.servlet.http.Cookie("csrfToken",csrfToken); %>
+    javax.servlet.http.Cookie cookie=new javax.servlet.http.Cookie("csrfToken",csrfToken);
+    response.addCookie(cookie);
+%>
 <html>
 <head>
     <meta charset="UTF-8">

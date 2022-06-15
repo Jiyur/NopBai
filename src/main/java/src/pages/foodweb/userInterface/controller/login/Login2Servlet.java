@@ -55,6 +55,28 @@ public class Login2Servlet extends HttpServlet {
         String pass = request.getParameter("password");
         User user = UserDAO.login(email, pass);
         String url ="/views/login.jsp";
+        // get the CSRF cookie
+        String csrfCookie = null;
+        for (Cookie cookie : request.getCookies()) {
+            if (cookie.getName().equals("csrf")) {
+                csrfCookie = cookie.getValue();
+            }
+        }
+
+        // get the CSRF form field
+        String csrfField = request.getParameter("csrf");
+
+        // validate CSRF
+        if (csrfCookie == null || csrfField == null || !csrfCookie.equals(csrfField)) {
+            try {
+                response.sendError(401);
+            } catch (IOException e) {
+                // ...
+            }
+            return;
+        }
+
+
         if(user != null) {
             url ="index.jsp";
             session.setAttribute("user",user);
