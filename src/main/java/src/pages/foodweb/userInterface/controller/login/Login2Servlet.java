@@ -55,7 +55,7 @@ public class Login2Servlet extends HttpServlet {
         String pass = request.getParameter("password");
         User user = UserDAO.login(email, pass);
         String url ="/views/login.jsp";
-        // get the CSRF cookie
+        // Lấy CSRF cookie
         String csrfCookie = null;
         for (Cookie cookie : request.getCookies()) {
             System.out.println(cookie.getName());
@@ -64,7 +64,7 @@ public class Login2Servlet extends HttpServlet {
             }
         }
 
-        // get the CSRF form field
+        // Lấy CSRF từ form
         String csrfField = request.getParameter("csrfToken");
 
         // validate CSRF
