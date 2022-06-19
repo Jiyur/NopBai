@@ -250,7 +250,7 @@
 <script type="text/javascript" src="/assets/js/scriptDetailFood.js"></script>
 <script src="<c:url value="/assets/js/scriptDetailFood.js"/>"></script>
 
-<script src="<c:url value="/assets/js/jquery-1.11.0.min.js"/>"></script>
+<script src="<c:url value="/assets/js/jquery-3.5.0.min.js"/>"></script>
 
 <script src="<c:url value="/assets/js/slick.min.js"/>"></script>
 
