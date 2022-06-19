@@ -2,6 +2,7 @@ package src.pages.foodweb.userInterface.controller.admin.food;
 
 import model.Catalog;
 import model.Food;
+import model.User;
 import src.pages.foodweb.userInterface.dao.admin.CateDao;
 import src.pages.foodweb.userInterface.dao.admin.FoodDAO;
 
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -23,7 +25,22 @@ public class FoodAdminServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        listFood(request,response);
+        try {
+            HttpSession session=request.getSession();
+            User user=(User)session.getAttribute("user");
+            String url="";
+            if(user.getRole().trim().equals("member")){
+                url="../";
+                response.sendRedirect(url);
+            }
+            else{
+                listFood(request,response);
+            }
+        }
+        catch(Exception e) {
+            response.sendRedirect("/");
+        }
+
     }
 
     protected void listFood(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

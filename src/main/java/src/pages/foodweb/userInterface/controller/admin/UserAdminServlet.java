@@ -15,7 +15,23 @@ public class UserAdminServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<User> listUser= UserDao.getAllUser();
         request.setAttribute("listUser",listUser);
-        request.getServletContext().getRequestDispatcher("/views/admin/user.jsp").forward(request,response);
+        try {
+            HttpSession session=request.getSession();
+            User user=(User)session.getAttribute("user");
+            String url="";
+            if(user.getRole().trim().equals("member")){
+                url="../";
+                response.sendRedirect(url);
+            }
+            else{
+                request.getServletContext().getRequestDispatcher("/views/admin/user.jsp").forward(request,response);
+            }
+
+        }
+        catch(Exception e) {
+            response.sendRedirect("/");
+        }
+
 
     }
 
