@@ -3,11 +3,13 @@ package src.pages.foodweb.userInterface.controller.login;
 import model.User;
 import src.pages.foodweb.userInterface.dao.UserDAO;
 import util.EmailUtil;
+import util.PasswordUtil;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+
 
 @WebServlet(name = "RegisterServlet", value = "/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
@@ -72,6 +74,10 @@ public class RegisterServlet extends HttpServlet {
                 msg = "Email or password";
                 response.getWriter().write(msg);
             }
+            else if(!PasswordUtil.checkStrengthOfPassword(pass)){
+                msg="Password strength";
+                response.getWriter().write(msg);
+            }
             else {
                 if(code.equals("")){
                     msg = "Code";
@@ -96,4 +102,5 @@ public class RegisterServlet extends HttpServlet {
             }
         }
     }
+
 }
