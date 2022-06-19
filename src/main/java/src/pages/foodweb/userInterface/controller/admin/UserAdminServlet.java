@@ -13,6 +13,21 @@ import java.util.List;
 public class UserAdminServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            HttpSession session=request.getSession();
+            User user=(User)session.getAttribute("user");
+            String url="";
+            if(user.getRole().trim().equals("member")){
+                url="../";
+            }
+            else{
+                url="/admin/cate";
+            }
+            response.sendRedirect(url);
+        }
+        catch(Exception e) {
+            response.sendRedirect("/");
+        }
         List<User> listUser= UserDao.getAllUser();
         request.setAttribute("listUser",listUser);
         request.getServletContext().getRequestDispatcher("/views/admin/user.jsp").forward(request,response);
