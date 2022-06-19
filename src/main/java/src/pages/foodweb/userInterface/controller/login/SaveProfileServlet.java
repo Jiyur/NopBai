@@ -10,7 +10,7 @@ import src.pages.foodweb.userInterface.dao.UserDAO;
 
 import java.io.PrintWriter;
 import java.util.UUID;
-
+import static org.apache.commons.text.StringEscapeUtils.escapeHtml4;
 @WebServlet(name = "SaveProfileServlet", value = "/SaveProfileServlet")
 public class SaveProfileServlet extends HttpServlet {
     private UserDAO userDAO;
@@ -26,8 +26,10 @@ public class SaveProfileServlet extends HttpServlet {
 
         String id = request.getParameter("id");
         String address = request.getParameter("address");
+//        String address = escapeHtml4(request.getParameter("address"));
         String name = user.getName();
         String phone = request.getParameter("phone");
+//        String phone = escapeHtml4(request.getParameter("phone"));
 
         UserDAO.update((UUID.fromString(id)), name, phone, address);
 
