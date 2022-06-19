@@ -1,4 +1,4 @@
-package csrf;
+package src.pages.foodweb.userInterface.csrf;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;

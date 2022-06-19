@@ -12,7 +12,6 @@ public class XFilter implements Filter {
         HttpServletResponse res=(HttpServletResponse) servletResponse;
         res.addHeader("X-Frame-Options","DENY");
         res.addHeader("X-Content-Type-Options", "nosniff");
-        res.addHeader("Content-Security-Policy","script-src 'self'");
         filterChain.doFilter(servletRequest,res);
     }
 

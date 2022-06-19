@@ -1,4 +1,4 @@
-<%@ page import="csrf.CSRF" %>
+<%@ page import="src.pages.foodweb.userInterface.csrf.CSRF" %>
 <%@ page import="java.security.NoSuchAlgorithmException" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -10,6 +10,7 @@
         e.printStackTrace();
     }
     javax.servlet.http.Cookie cookie=new javax.servlet.http.Cookie("csrfToken",csrfToken);
+    cookie.setHttpOnly(true);
     response.addCookie(cookie);
 %>
 <html>

@@ -1,4 +1,4 @@
-<%@ page import="csrf.CSRF" %>
+<%@ page import="src.pages.foodweb.userInterface.csrf.CSRF" %>
 <%@ page import="java.security.NoSuchAlgorithmException" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>

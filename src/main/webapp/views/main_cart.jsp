@@ -3,7 +3,7 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Calendar" %>
 <%@ page import="java.security.NoSuchAlgorithmException" %>
-<%@ page import="csrf.CSRF" %>
+<%@ page import="src.pages.foodweb.userInterface.csrf.CSRF" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
