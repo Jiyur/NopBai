@@ -31,16 +31,16 @@ public class FoodAdminServlet extends HttpServlet {
             String url="";
             if(user.getRole().trim().equals("member")){
                 url="../";
+                response.sendRedirect(url);
             }
             else{
-                url="/admin/cate";
+                listFood(request,response);
             }
-            response.sendRedirect(url);
         }
         catch(Exception e) {
             response.sendRedirect("/");
         }
-        listFood(request,response);
+
     }
 
     protected void listFood(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

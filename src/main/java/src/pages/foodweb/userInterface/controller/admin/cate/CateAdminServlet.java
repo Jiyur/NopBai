@@ -30,16 +30,17 @@ public class CateAdminServlet extends HttpServlet {
             String url="";
             if(user.getRole().trim().equals("member")){
                 url="../";
+                response.sendRedirect(url);
             }
             else{
-                url="/admin/cate";
+                listCate(request, response);
             }
-            response.sendRedirect(url);
+
         }
         catch(Exception e) {
             response.sendRedirect("/");
         }
-        listCate(request, response);
+
     }
 
     protected void listCate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
