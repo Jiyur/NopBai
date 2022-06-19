@@ -6,4 +6,16 @@
     <error-page>
         <location>/error-page/index.html</location>
     </error-page>
+    <filter>
+        <filter-name>Filter</filter-name>
+        <filter-class>util.XSSFilter</filter-class>
+        <init-param>
+            <param-name>test-param</param-name>
+            <param-value>Initialization Paramter</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>Filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

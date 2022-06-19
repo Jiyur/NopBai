@@ -1,6 +1,7 @@
 <%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -74,13 +75,21 @@
                             <input id="userId" type="hidden" value="${user.id}" name="uid">
 
                             <label style="padding: 20px">Số điện thoại</label>
-                            <input id="userPhone" type="text" name="phone" placeholder="Phone" value="${user.phone}"
+<%--                            <input id="userPhone" type="text" name="phone" placeholder="Phone" value="${user.phone}"--%>
+<%--                                   style="padding:6px;margin-left: 0px;opacity: 80%">--%>
+                            <input id="userPhone" type="text" name="phone" placeholder="Phone" value="<c:out value="${user.phone}"/>"
                                    style="padding:6px;margin-left: 0px;opacity: 80%">
+<%--                            <input id="userPhone" type="text" name="phone" placeholder="Phone" value="<c:out value="${fn:escapeXml(user.phone)}"/>"--%>
+<%--                                   style="padding:6px;margin-left: 0px;opacity: 80%">--%>
                             <br>
 
                             <label style="padding: 20px">Địa chỉ</label>
+<%--                            <input id="userAddress" type="text" name="address" placeholder="Address"--%>
+<%--                                   value="${user.address}" style="padding: 6px;margin-left: 50px; margin-top: 12px;opacity: 80% ">--%>
                             <input id="userAddress" type="text" name="address" placeholder="Address"
-                                   value="${user.address}" style="padding: 6px;margin-left: 50px; margin-top: 12px;opacity: 80% ">
+                                   value="<c:out value="${user.address}"/>" style="padding: 6px;margin-left: 50px; margin-top: 12px;opacity: 80% ">
+<%--                            <input id="userAddress" type="text" name="address" placeholder="Address"--%>
+<%--                                   value="${fn:escapeXml(user.address)}" style="padding: 6px;margin-left: 50px; margin-top: 12px;opacity: 80% ">--%>
                             <br>
 
                             <button class="js-buy-ticket px-btn theme btn btn-success" style="margin-top: 26px ;margin-right: 20px; border: solid black 1px" type=""
