@@ -20,7 +20,7 @@ public class HibernateUtil2{
                 settings.put(Environment.DRIVER, "org.postgresql.Driver");
                 settings.put(Environment.URL,"jdbc:postgresql://localhost:5432/food_web");
                 settings.put(Environment.USER,"postgres");
-                settings.put(Environment.PASS,"123987654");
+                settings.put(Environment.PASS,"Just4fun4");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQL9Dialect");
 
                 settings.put(Environment.SHOW_SQL, "true");

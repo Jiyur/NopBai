@@ -17,7 +17,7 @@ public class HibernateUtil {
         pros.put(Environment.DRIVER,"org.postgresql.Driver");
         pros.put(Environment.URL,"jdbc:postgresql://localhost:5432/food_web");
         pros.put(Environment.USER,"postgres");
-        pros.put(Environment.PASS,"123987654");
+        pros.put(Environment.PASS,"Just4fun4");
         conf.setProperties(pros);
         conf.addAnnotatedClass(User.class);
         conf.addAnnotatedClass(Food.class);

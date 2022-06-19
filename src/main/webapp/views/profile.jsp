@@ -77,7 +77,7 @@
                             <label style="padding: 20px">Số điện thoại</label>
 <%--                            <input id="userPhone" type="text" name="phone" placeholder="Phone" value="${user.phone}"--%>
 <%--                                   style="padding:6px;margin-left: 0px;opacity: 80%">--%>
-                            <input id="userPhone" type="text" name="phone" placeholder="Phone" value="<c:out value="${user.phone}"/>"
+                            <input id="userPhone" type="text" name="phone" placeholder="Phone" value="<c:out value="${user.phone}"/>" maxlength="10"
                                    style="padding:6px;margin-left: 0px;opacity: 80%">
 <%--                            <input id="userPhone" type="text" name="phone" placeholder="Phone" value="<c:out value="${fn:escapeXml(user.phone)}"/>"--%>
 <%--                                   style="padding:6px;margin-left: 0px;opacity: 80%">--%>
@@ -86,7 +86,7 @@
                             <label style="padding: 20px">Địa chỉ</label>
 <%--                            <input id="userAddress" type="text" name="address" placeholder="Address"--%>
 <%--                                   value="${user.address}" style="padding: 6px;margin-left: 50px; margin-top: 12px;opacity: 80% ">--%>
-                            <input id="userAddress" type="text" name="address" placeholder="Address"
+                            <input id="userAddress" type="text" name="address" placeholder="Address" maxlength="30"
                                    value="<c:out value="${user.address}"/>" style="padding: 6px;margin-left: 50px; margin-top: 12px;opacity: 80% ">
 <%--                            <input id="userAddress" type="text" name="address" placeholder="Address"--%>
 <%--                                   value="${fn:escapeXml(user.address)}" style="padding: 6px;margin-left: 50px; margin-top: 12px;opacity: 80% ">--%>
@@ -124,6 +124,14 @@
         var id = document.getElementById("userId").value;
         var phone = document.getElementById("userPhone").value;
         var address = document.getElementById("userAddress").value;
+        if(phone.length>10){
+            phone=phone.substring(0,10)
+            console.log(phone)
+        }
+        if(address.length>50){
+            address=address.substring(0,50)
+            console.log(address)
+        }
         $.ajax({
             url: "/SaveProfileServlet",
             type: "get", //send it through get method
