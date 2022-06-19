@@ -28,6 +28,10 @@ public class DetailFoodServlet extends HttpServlet {
         if(foodId == null){
             foodId = request.getParameter("relativeFoodId");
         }
+        if(foodId.length()>30){
+            foodId=foodId.substring(0,30);
+            System.out.println(foodId);
+        }
         Food food = null;
         food = foodDAO.getFood(Integer.parseInt(foodId));
         request.setAttribute("food", food);

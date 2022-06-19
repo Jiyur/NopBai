@@ -190,6 +190,12 @@
                             text: response + ' is not empty'
                         })
                     }
+                    if(response=="Password strength"){
+                        Swal.fire({
+                            icon: 'error',
+                            text: "Password must be longer than 8 char, contain alphabet, number and special char"
+                        })
+                    }
                     if(response == "Erro Code"){
                         Swal.fire({
                             icon: 'warning',

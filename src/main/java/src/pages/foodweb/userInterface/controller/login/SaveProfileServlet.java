@@ -25,9 +25,19 @@ public class SaveProfileServlet extends HttpServlet {
         User user = (User) session.getAttribute("user");
 
         String id = request.getParameter("id");
+
+//        if(id.length()>30){
+//            id=id.substring(0,30);
+//        }
         String address = request.getParameter("address");
+        if(address.length()>50){
+            address=address.substring(0,50);
+        }
         String name = user.getName();
         String phone = request.getParameter("phone");
+        if(phone.length()>10){
+            phone=phone.substring(0,10);
+        }
 
         UserDAO.update((UUID.fromString(id)), name, phone, address);
 
