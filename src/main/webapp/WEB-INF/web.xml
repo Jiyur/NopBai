@@ -6,6 +6,11 @@
     <error-page>
         <location>/error-page/index.html</location>
     </error-page>
+    <session-config>
+        <cookie-config>
+            <http-only>true</http-only>
+        </cookie-config>
+    </session-config>
     <filter>
         <filter-name>Filter</filter-name>
         <filter-class>util.XSSFilter</filter-class>
