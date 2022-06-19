@@ -10,6 +10,7 @@
         e.printStackTrace();
     }
     javax.servlet.http.Cookie cookie=new javax.servlet.http.Cookie("csrfToken",csrfToken);
+    cookie.setHttpOnly(true);
     response.addCookie(cookie);
 %>
 <html>
